@@ -14,7 +14,7 @@ function HomeScreen({ navigation }) {
     <View style={styles.container1}>
         <Image
         style={styles.magpiegraphic}
-        source={require('C:/APP/03-ViewPNG/assets/magpie.png')} />
+        source={require('C:/APP/05-Pizza/assets/magpie.png')} />
          <Text style={styles.magpietitle}>Magpie Bank </Text>
     </View>
 
