@@ -38,44 +38,28 @@ function HomeScreen({ navigation }) {
         value={text}
         onChangeText={onChangeText}
       />
-    </View>
-    </View>
 
+
+    </View>
       <View style={styles.box}>  
-        <Pressable
-            onPress={() => 
-            navigation.navigate('Payments', {
-            emailAddress: text,
-          })}>
-            
-              <View>
-                  <Text style={styles.title}>
-                  Get updates from O'Mario's Pizza
-                  </Text>  
-              </View>
+        <Pressable>
+        
+        onPress={() => {
+        navigation.navigate('Payments', {
+        emailAddress: text,
+        });
+        }}
+  
+
+        <Text style={styles.title}>
+        Get updates from O'Mario's Pizza
+        </Text>  
+
         </Pressable>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </View>
-</View>
-   
+    </View>
+
+  </View>    
   );
 }
       

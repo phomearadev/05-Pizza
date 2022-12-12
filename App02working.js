@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { Pressable, Image, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
-import {StatusBar} from 'expo-status-bar';
 
 SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 5000);
 
 function HomeScreen({ navigation }) {
-  const [text, onChangeText] = React.useState(null);
-  //console.log(input);
-
   return (  
   <View style={{ flex: 1}}>  
 
@@ -30,72 +25,27 @@ function HomeScreen({ navigation }) {
  
     <View style={styles.container3}>
       <View style={styles.box}>  
-        <Text style={styles.title}> Enter your Email Address  </Text>
-        <TextInput 
-        style={styles.title} onChangeText={(Text) => setInput(text)}
-        style={styles.title}
-        placeholder="Your Email Address"
-        value={text}
-        onChangeText={onChangeText}
-      />
-    </View>
-    </View>
-
+        <Text style={styles.title}> Email Address  </Text>
+      </View>
       <View style={styles.box}>  
         <Pressable
-            onPress={() => 
-            navigation.navigate('Payments', {
-            emailAddress: text,
+          onPress={() => navigation.navigate('Payments',{
+            itemId: 42,
+            otherParam: 'anything you want here',
           })}>
-            
-              <View>
-                  <Text style={styles.title}>
-                  Get updates from O'Mario's Pizza
-                  </Text>  
-              </View>
+          <Text style={styles.title}>
+            Get updates from O'Mario's Pizza
+          </Text>
         </Pressable>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </View>
-</View>
-   
-  );
-}
-      
-
-function WelcomeScreen({ route, navigation }) {
-
-  const { emailAddress} = route.params;
-  
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={styles.heading1}>Welcome to Mario's</Text>
-      <Text style={styles.spacer} >We will send updates to {emailAddress}</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
     </View>
-  );
-}
 
+  </View>    
+  );
+};
 
 function MyPayment({route, navigation}) {
-  const { emailAddress} = route.params;
+  const { itemId, otherParam } = route.params;
   return (
        <View style={[styles.box,{
         marginTop: 300,
@@ -103,7 +53,9 @@ function MyPayment({route, navigation}) {
         marginLeft: 75,
         marginRight: 75}
       ]}>  
-      <Text>Congratulations! Updates and Offers from O'Mario's Pizza will be sent to...{emailAddress}</Text>
+      <Text>Make a New Payment...</Text>
+      <Text>itemId: {JSON.stringify(itemId)}</Text>
+      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
     </View>
   );
 }
@@ -120,7 +72,6 @@ function App() {
       />
         <Stack.Screen name="Payments" component={MyPayment} />
       </Stack.Navigator>
-      
     </NavigationContainer>
   );
 }
