@@ -1,8 +1,6 @@
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
-import { Button, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 
 const Item = ({ name }) => (
   <View style={styles.item}>
@@ -33,39 +31,10 @@ const App = () => {
     getMovies();
   }, []);
 
-  
-
-  useEffect(() => {
-    getPizzas();
-  }, []);
-
-  const getPizzas = async () => {
-    try {
-        const response = await fetch('https://raw.githubusercontent.com/chrismatchett/met-expo-demos-2/main/assets/pizza.json');
-        const json = await response.json();
-        setData(json);
-        console.log(json);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-   }
-
-
   const renderItem1 = ({ item }) => (
-    <TouchableOpacity
-      style={styles.button}
-      onPress={() => onPress(JSON.stringify(item))
-    }>
-      <Text>{item.name}, £{item.price}</Text>
-    </TouchableOpacity>
+    <Item name={item.name}
+    />
   );
-
-  const onPress = (msg) => {
-    //alert(msg);
-    navigation.navigate('Order', { pizza: msg });
-  };
   
   const renderItem2 = ({ item }) => (
     <Item name={item.price}
@@ -101,17 +70,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   name: {
-    fontSize: 28,
-    fontWeight: 'bold',
-  },
-  button: {
-    alignItems: 'center',
-    width: 350,
-    backgroundColor: '#f9c2ff',
-    padding: 30,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    fontSize: 28,
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });
