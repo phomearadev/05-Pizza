@@ -3,9 +3,11 @@ import { View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './app/pizza_home';
-import WelcomeScreen from './app/pizza_welcome';
-import OrderScreen from './app/pizza_order';
+import HomeScreen from './APP/05-pizza/TheApp/pizza_home';
+import WelcomeScreen from './APP/05-pizza/TheApp/pizza_welcome';
+import OrderScreen from './APP/05-pizza/TheApp/pizza_order';
+
+
 
 //https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
 
